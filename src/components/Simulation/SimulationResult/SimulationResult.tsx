@@ -43,13 +43,17 @@ export function SimulationResult(): ReactNode {
           ))}
         </div>
         {rows.map((row) => (
-          <div key={row.id} className={styles.installmentsRow}>
-            <p className={styles.row}>{row.outstandingBalance}</p>
-            <p className={styles.row}>{row.interest}</p>
-            <p className={styles.row}>{row.adjustedOutstandingBalance}</p>
-            <p className={styles.row}>{row.installmentAmount}</p>
-            <p className={styles.row}>{row.dueDate}</p>
-          </div>
+          <>
+            <hr className={styles.divider} />
+            <div key={row.id} className={styles.installmentsRow}>
+              <p className={styles.row}>{row.outstandingBalance}</p>
+              <p className={styles.row}>{row.interest}</p>
+              <p className={styles.row}>{row.adjustedOutstandingBalance}</p>
+              <p className={styles.row}>{row.installmentAmount}</p>
+              <p className={styles.row}>{row.dueDate}</p>
+            </div>
+            <hr className={styles.divider} />
+          </>
         ))}
       </div>
 

@@ -36,6 +36,9 @@
 .column {
   flex: 1;
 }
+.column:nth-child(1) {
+  flex: 1.5;
+}
 
 .column:nth-child(3) {
   flex: 2;
@@ -52,6 +55,10 @@
 .row {
   flex: 1;
 }
+
+.row:nth-child(1) {
+  flex: 1.5;
+}
 .row:nth-child(3) {
   flex: 2;
 }
@@ -62,4 +69,13 @@
   margin-top: 5.4rem;
 
   background-color: rgba(33, 174, 30, 1);
+}
+
+.divider {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid rgba(196, 196, 196, 1);
+  margin: 1.4rem 0;
+  padding: 0;
 }
