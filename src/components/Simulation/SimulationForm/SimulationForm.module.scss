@@ -6,8 +6,6 @@
 
   padding: 7rem 3rem 3.8rem 3.3rem;
 
-  margin-inline: 5%;
-
   border: 1px solid rgba(212, 212, 212, 1);
   border-radius: 5px;
 
@@ -26,10 +24,4 @@
   margin-top: 3rem;
 
   background-color: rgba(243, 161, 38, 1);
-}
-
-@include breakpoints.from1024 {
-  .simulationForm {
-    margin-inline: 19.1rem;
-  }
 }

@@ -1,0 +1,65 @@
+.simulationResult {
+  padding: 3.9rem;
+
+  border: 1px solid rgba(212, 212, 212, 1);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(236, 236, 236, 1);
+
+  background-color: rgba(255, 255, 255, 1);
+}
+.simulationHeader {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 6.9rem;
+}
+
+.installmentsTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: left;
+
+  margin-top: 7.3rem;
+  margin-bottom: 3.4rem;
+
+  color: rgba(115, 115, 115, 1);
+}
+
+.installmentsColumns {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: rgba(51, 51, 51, 1);
+
+  display: flex;
+  text-align: left;
+}
+
+.column {
+  flex: 1;
+}
+
+.column:nth-child(3) {
+  flex: 2;
+}
+
+.installmentsRow {
+  font-size: 1.6rem;
+  font-weight: 400;
+
+  display: flex;
+  text-align: left;
+}
+
+.row {
+  flex: 1;
+}
+.row:nth-child(3) {
+  flex: 2;
+}
+
+.button {
+  width: 100%;
+
+  margin-top: 5.4rem;
+
+  background-color: rgba(33, 174, 30, 1);
+}

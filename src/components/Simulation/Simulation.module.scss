@@ -1,8 +1,10 @@
 .simulation {
   padding-top: 7.7rem;
+
+  text-align: center;
 }
 
-.title {
+.formTitle {
   font-size: 2rem;
   font-weight: 700;
   line-height: 2.7;
@@ -10,4 +12,12 @@
   padding-bottom: 2.6rem;
 
   color: rgba(0, 0, 0, 1);
+}
+.resultTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+
+  margin-top: 7.2rem;
+  margin-bottom: 3.6rem;
 }

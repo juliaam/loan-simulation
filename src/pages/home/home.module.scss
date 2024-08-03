@@ -1,9 +1,11 @@
 @use "~styles/colors.scss" as colors;
+@use "../../styles/breakpoints.scss" as breakpoints;
 
 .home {
   text-align: center;
 
   padding-top: 7.7rem;
+  padding-inline: 5%;
 }
 
 .title {
@@ -12,4 +14,9 @@
   line-height: 6.8rem;
 
   color: colors.$gray;
+}
+@include breakpoints.from1280 {
+  .home {
+    padding-inline: 20%;
+  }
 }
