@@ -1,8 +1,6 @@
-@use "../../styles/colors.scss" as colors;
+@use "~styles/colors.scss" as colors;
 
 .button {
-  width: 100%;
-
   font-family: "Open Sans";
   font-size: 1.6rem;
   line-height: 1.3125;
@@ -15,8 +13,6 @@
 
   border: none;
   box-shadow: 0px 4px 4px 0px rgba(135, 135, 135, 0.25);
-
-  background-color: rgba(243, 161, 38, 1);
 
   cursor: pointer;
 

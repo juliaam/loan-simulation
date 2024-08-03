@@ -1,11 +1,9 @@
-@use "../../styles/colors.scss" as colors;
+@use "~styles/colors.scss" as colors;
 
 .home {
   text-align: center;
 
   padding-top: 7.7rem;
-
-  background-color: rgba(246, 246, 246, 1);
 }
 
 .title {

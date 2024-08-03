@@ -14,9 +14,7 @@ export function SimulationForm(): ReactNode {
         <Input placeholder="QUAL O VALOR DO EMPRÉSTIMO" />
         <Input placeholder="QUAL VALOR DESEJA PAGAR POR MÊS" />
       </div>
-      <div className={styles.button}>
-        <Button>SIMULAR</Button>
-      </div>
+      <Button className={styles.button}>SIMULAR</Button>
     </div>
   );
 }
