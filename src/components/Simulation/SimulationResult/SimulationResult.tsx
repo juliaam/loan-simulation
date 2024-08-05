@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { CardResult } from "../../CardResult/CardResult";
 import styles from "./SimulationResult.module.scss";
 import { Button } from "../../Button/Button";
@@ -43,7 +43,7 @@ export function SimulationResult(): ReactNode {
           ))}
         </div>
         {rows.map((row) => (
-          <>
+          <React.Fragment key={row.id}>
             <hr className={styles.divider} />
             <div key={row.id} className={styles.installmentsRow}>
               <p className={styles.row}>{row.outstandingBalance}</p>
@@ -53,7 +53,7 @@ export function SimulationResult(): ReactNode {
               <p className={styles.row}>{row.dueDate}</p>
             </div>
             <hr className={styles.divider} />
-          </>
+          </React.Fragment>
         ))}
       </div>
 

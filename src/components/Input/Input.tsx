@@ -1,6 +1,23 @@
-import { ComponentProps, ReactNode } from "react";
+import { ComponentProps, ReactElement, forwardRef, Ref } from "react";
 import styles from "./input.module.scss";
 
-export function Input(props: ComponentProps<"input">): ReactNode {
-  return <input className={styles.input} {...props}></input>;
+type InputProps = ComponentProps<"input">;
+
+function Input(
+  { name, type = "text", ...props }: InputProps,
+  ref: Ref<HTMLInputElement>
+): ReactElement {
+  return (
+    <input
+      className={styles.input}
+      type={type}
+      name={name}
+      ref={ref}
+      {...props}
+    />
+  );
 }
+
+const ForwardedInput = forwardRef(Input);
+
+export { ForwardedInput as Input };
