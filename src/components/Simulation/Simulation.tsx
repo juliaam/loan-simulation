@@ -2,6 +2,11 @@ import { ReactNode } from "react";
 import { SimulationForm } from "./SimulationForm/SimulationForm";
 import styles from "./Simulation.module.scss";
 import { SimulationResult } from "./SimulationResult/SimulationResult";
+import { ISimulationFormSchema } from "./SimulationForm/SimulationForm";
+
+function handleSimulationForm(data: ISimulationFormSchema) {
+  console.log(data);
+}
 
 export function Simulation(): ReactNode {
   return (
@@ -9,7 +14,7 @@ export function Simulation(): ReactNode {
       <p className={styles.formTitle}>
         Preencha o formulário abaixo para simular
       </p>
-      <SimulationForm />
+      <SimulationForm onSubmitForm={handleSimulationForm} />
       <p className={styles.resultTitle}>
         Veja a simulação para o seu empréstimo antes de efetivar
       </p>

@@ -1,5 +1,5 @@
 import { ComponentProps, ReactElement, forwardRef, Ref } from "react";
-import styles from "./input.module.scss";
+import styles from "./Input.module.scss";
 
 type InputProps = ComponentProps<"input">;
 

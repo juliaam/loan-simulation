@@ -1,37 +1,29 @@
 import { ReactNode } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../../Input/Input";
 import { Button } from "../../Button/Button";
 
 import styles from "./SimulationForm.module.scss";
+import { simulationFormSchema } from "./SimulationForm.schema";
 
-const simulationFormSchema = z.object({
-  cpf: z.string(),
-  uf: z.string(),
-  date: z.string(),
-  total_value: z.number(),
-  month_value: z.number(),
-});
+export type ISimulationFormSchema = z.infer<typeof simulationFormSchema>;
 
-type ISimulationFormSchema = z.infer<typeof simulationFormSchema>;
+interface SimulationFormProps {
+  onSubmitForm: SubmitHandler<ISimulationFormSchema>;
+}
 
-export function SimulationForm(): ReactNode {
+export function SimulationForm({
+  onSubmitForm,
+}: SimulationFormProps): ReactNode {
   const { register, handleSubmit } = useForm<ISimulationFormSchema>({
     resolver: zodResolver(simulationFormSchema),
   });
 
-  function handleSimulationForm(data: ISimulationFormSchema) {
-    console.log(data);
-  }
-
   return (
     <div className={styles.simulationForm}>
-      <form
-        onSubmit={handleSubmit(handleSimulationForm)}
-        className={styles.inputGroup}
-      >
+      <form onSubmit={handleSubmit(onSubmitForm)} className={styles.inputGroup}>
         <Input placeholder="CPF" {...register("cpf")} />
         <Input placeholder="UF" {...register("uf")} />
         <Input placeholder="DATA" {...register("date")} />
