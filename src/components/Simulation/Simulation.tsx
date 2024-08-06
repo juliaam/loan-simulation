@@ -3,26 +3,40 @@ import { SimulationForm } from "./SimulationForm/SimulationForm";
 import styles from "./Simulation.module.scss";
 import { SimulationResult } from "./SimulationResult/SimulationResult";
 import { ISimulationFormSchema } from "./SimulationForm/SimulationForm";
-import { LoanService } from "../../services/loan";
+import { ISimulationResult, LoanService } from "../../services/loan";
 
 export function Simulation(): ReactNode {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [requestSimulation, setRequestSimulation] =
+    useState<ISimulationFormSchema | null>(null);
+  const [resultSimulation, setResultSimulation] =
+    useState<ISimulationResult | null>(null);
 
   const handleSimulationForm = async (data: ISimulationFormSchema) => {
-    setLoading(true);
-    await LoanService.simulate(data);
-    setLoading(false);
+    const result = await LoanService.simulate(data);
+
+    setRequestSimulation(data);
+    if (result) {
+      setResultSimulation(result);
+    }
   };
+
   return (
     <div className={styles.simulation}>
       <p className={styles.formTitle}>
         Preencha o formulário abaixo para simular
       </p>
       <SimulationForm onSubmitForm={handleSimulationForm} />
-      <p className={styles.resultTitle}>
-        Veja a simulação para o seu empréstimo antes de efetivar
-      </p>
-      <SimulationResult loading={loading} />
+      {requestSimulation && resultSimulation && (
+        <>
+          <p className={styles.resultTitle}>
+            Veja a simulação para o seu empréstimo antes de efetivar
+          </p>
+          <SimulationResult
+            requestSimulation={requestSimulation}
+            resultSimulation={resultSimulation}
+          />
+        </>
+      )}
     </div>
   );
 }

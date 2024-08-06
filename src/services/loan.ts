@@ -1,18 +1,25 @@
 import { api } from "../config/api";
 import { ISimulationFormSchema } from "../components/Simulation/SimulationForm/SimulationForm";
 
-interface ILoanResult {
+interface parcel {
   outstandingBalance: string;
   interest: string;
   adjustedOutstandingBalance: string;
   installmentAmount: string;
   dueDate: string;
 }
+export interface ISimulationResult {
+  parcels: parcel[];
+  totalPerCent: number;
+  totalInterest: number;
+  monthsToQuit: string;
+  totalWithInterest: number;
+}
 
 const LoanService = {
   async simulate(
     data: ISimulationFormSchema
-  ): Promise<ILoanResult | undefined> {
+  ): Promise<ISimulationResult | undefined> {
     try {
       const res = await api.post(`loan/simulate`, data);
       return res.data;
