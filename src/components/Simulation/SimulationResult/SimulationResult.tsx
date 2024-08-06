@@ -14,6 +14,9 @@ const columns = [
   "VENCIMENTO",
 ];
 
+const formatMoney = (price: string | number) =>
+  new Intl.NumberFormat("pt-BR").format(Number(price));
+
 interface ISimulationResultProps {
   requestSimulation: ISimulationFormSchema;
   resultSimulation: ISimulationResult;
@@ -40,15 +43,15 @@ export function SimulationResult({
         <div className={styles.simulationHeader}>
           <CardResult
             title="VALOR REQUERIDO:"
-            value={requestSimulation.total_value}
+            value={`R$${formatMoney(requestSimulation.total_value)}`}
           />
           <CardResult
             title="TAXA DE JUROS:"
-            value={resultSimulation.totalPerCent}
+            value={`${resultSimulation.totalPerCent.toFixed(2)}%`}
           />
           <CardResult
             title="VALOR QUE DESEJA PAGAR POR MÊS"
-            value={requestSimulation.month_value}
+            value={`R$${formatMoney(requestSimulation.month_value)}`}
           />
           <CardResult
             title="TOTAL DE MESES PARA QUITAR"
@@ -56,11 +59,15 @@ export function SimulationResult({
           />
           <CardResult
             title="TOTAL DE JUROS"
-            value={resultSimulation.totalInterest}
+            value={`R$${formatMoney(
+              resultSimulation.totalInterest.toFixed(2)
+            )}`}
           />
           <CardResult
             title="TOTAL A PAGAR"
-            value={resultSimulation.totalWithInterest}
+            value={`R$${formatMoney(
+              resultSimulation.totalWithInterest.toFixed(2)
+            )}`}
           />
         </div>
         <p className={styles.installmentsTitle}>PROJEÇÃO DAS PARCELAS:</p>
@@ -79,10 +86,16 @@ export function SimulationResult({
                 key={row.outstandingBalance}
                 className={styles.installmentsRow}
               >
-                <p className={styles.row}>{row.outstandingBalance}</p>
-                <p className={styles.row}>{row.interest}</p>
-                <p className={styles.row}>{row.adjustedOutstandingBalance}</p>
-                <p className={styles.row}>{row.installmentAmount}</p>
+                <p className={styles.row}>{`R$${formatMoney(
+                  row.outstandingBalance
+                )}`}</p>
+                <p className={styles.row}>{`R$${formatMoney(row.interest)}`}</p>
+                <p className={styles.row}>{`R$${formatMoney(
+                  row.adjustedOutstandingBalance
+                )}`}</p>
+                <p className={styles.row}>{`R$${formatMoney(
+                  row.installmentAmount
+                )}`}</p>
                 <p className={styles.row}>{row.dueDate}</p>
               </div>
               <hr className={styles.divider} />
