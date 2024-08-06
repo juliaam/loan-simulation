@@ -1,6 +1,5 @@
 import { ComponentProps, ReactElement, forwardRef, Ref } from "react";
 import styles from "./Input.module.scss";
-import InputMask from "react-input-mask";
 
 interface InputProps extends ComponentProps<"input"> {
   mask?: string;
