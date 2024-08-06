@@ -26,7 +26,7 @@ export function SimulationForm({
       <form onSubmit={handleSubmit(onSubmitForm)} className={styles.inputGroup}>
         <Input {...register("cpf")} placeholder="CPF" />
         <Input placeholder="UF" {...register("uf")} />
-        <Input placeholder="DATA" mask="99/99/9999" {...register("date")} />
+        <Input placeholder="DATA" mask="99/99/9999" {...register("birth")} />
         <Input
           type="number"
           placeholder="QUAL O VALOR DO EMPRÉSTIMO"

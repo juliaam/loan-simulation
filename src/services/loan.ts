@@ -2,7 +2,7 @@ import { api } from "../config/api";
 import { ISimulationFormSchema } from "../components/Simulation/SimulationForm/SimulationForm";
 
 interface parcel {
-  outstandingBalance: string;
+  outStadingBalance: string;
   interest: string;
   adjustedOutstandingBalance: string;
   installmentAmount: string;
