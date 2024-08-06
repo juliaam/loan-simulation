@@ -31,6 +31,7 @@ export function Simulation(): ReactNode {
           <p className={styles.resultTitle}>
             Veja a simulação para o seu empréstimo antes de efetivar
           </p>
+
           <SimulationResult
             requestSimulation={requestSimulation}
             resultSimulation={resultSimulation}
