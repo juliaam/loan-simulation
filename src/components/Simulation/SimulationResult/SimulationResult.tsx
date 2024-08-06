@@ -4,7 +4,7 @@ import { Button } from "../../Button/Button";
 import { ISimulationFormSchema } from "../SimulationForm/SimulationForm";
 import { ISimulationResult, LoanService } from "../../../services/loan";
 import styles from "./SimulationResult.module.scss";
-import { Handshake } from "lucide-react";
+import { ArrowRight, Handshake } from "lucide-react";
 
 const columns = [
   "SALDO DEVEDOR",
@@ -117,7 +117,7 @@ export function SimulationResult({
         )}
 
         <Button onClick={handleLoan} className={styles.button}>
-          EFETIVAR O EMPRÉSTIMO
+          EFETIVAR O EMPRÉSTIMO <ArrowRight size={20} />
         </Button>
       </div>
     </>
