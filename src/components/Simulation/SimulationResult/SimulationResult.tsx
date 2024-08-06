@@ -2,7 +2,7 @@ import React, { ReactNode, useState } from "react";
 import { CardResult } from "../../CardResult/CardResult";
 import { Button } from "../../Button/Button";
 import { ISimulationFormSchema } from "../SimulationForm/SimulationForm";
-import { ISimulationResult } from "../../../services/loan";
+import { ISimulationResult, LoanService } from "../../../services/loan";
 import styles from "./SimulationResult.module.scss";
 import { Handshake } from "lucide-react";
 
@@ -30,19 +30,18 @@ const formatDate = (date: string) => {
 interface ISimulationResultProps {
   requestSimulation: ISimulationFormSchema;
   resultSimulation: ISimulationResult;
-  handleLoan?: () => void;
 }
 
 export function SimulationResult({
   requestSimulation,
   resultSimulation,
 }: ISimulationResultProps): ReactNode {
-  console.log(typeof requestSimulation.total_value, "resultSimulation");
   const [message, setMessage] = useState(false);
 
-  const handleLoan = () => {
-    setMessage(true);
+  const handleLoan = async () => {
+    await LoanService.create(requestSimulation);
 
+    setMessage(true);
     setTimeout(() => {
       setMessage(false);
     }, 3000);
@@ -106,11 +105,10 @@ export function SimulationResult({
                 </p>
                 <p className={styles.row}>{formatDate(row.dueDate)}</p>
               </div>
-              <hr className={styles.divider} />
             </React.Fragment>
           ))}
-          <p className={styles.lastRow}>R$0</p>
           <hr className={styles.divider} />
+          <p className={styles.lastRow}>R$0,00</p>
         </div>
         {message && (
           <div className={styles.popup}>

@@ -11,8 +11,6 @@ export function Simulation(): ReactNode {
   const [resultSimulation, setResultSimulation] =
     useState<ISimulationResult | null>(null);
 
-  const realizeLoan = () => {};
-
   const handleSimulationForm = async (data: ISimulationFormSchema) => {
     const result = await LoanService.simulate(data);
 
@@ -36,7 +34,6 @@ export function Simulation(): ReactNode {
           <SimulationResult
             requestSimulation={requestSimulation}
             resultSimulation={resultSimulation}
-            handleLoan={realizeLoan}
           />
         </>
       )}

@@ -27,6 +27,16 @@ const LoanService = {
       console.error(error);
     }
   },
+  async create(
+    data: ISimulationFormSchema
+  ): Promise<ISimulationResult | undefined> {
+    try {
+      const res = await api.post(`loan/`, data);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
 };
 
 export { LoanService };
