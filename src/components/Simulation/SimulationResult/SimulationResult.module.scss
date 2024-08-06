@@ -79,3 +79,29 @@
   margin: 1.4rem 0;
   padding: 0;
 }
+
+.popup {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  position: fixed;
+  background-color: rgb(13, 249, 107);
+  color: rgb(68, 68, 68);
+  border-radius: 5px;
+  top: 0;
+  left: 43%;
+  padding: 1.5rem;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

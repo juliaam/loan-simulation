@@ -1,9 +1,10 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { CardResult } from "../../CardResult/CardResult";
-import styles from "./SimulationResult.module.scss";
 import { Button } from "../../Button/Button";
 import { ISimulationFormSchema } from "../SimulationForm/SimulationForm";
 import { ISimulationResult } from "../../../services/loan";
+import styles from "./SimulationResult.module.scss";
+import { Handshake } from "lucide-react";
 
 const columns = [
   "SALDO DEVEDOR",
@@ -16,12 +17,23 @@ const columns = [
 interface ISimulationResultProps {
   requestSimulation: ISimulationFormSchema;
   resultSimulation: ISimulationResult;
+  handleLoan?: () => void;
 }
 
 export function SimulationResult({
   requestSimulation,
   resultSimulation,
 }: ISimulationResultProps): ReactNode {
+  const [message, setMessage] = useState(false);
+
+  const handleLoan = () => {
+    setMessage(true);
+
+    setTimeout(() => {
+      setMessage(false);
+    }, 3000);
+  };
+
   return (
     <>
       <div className={styles.simulationResult}>
@@ -77,8 +89,15 @@ export function SimulationResult({
             </React.Fragment>
           ))}
         </div>
+        {message && (
+          <div className={styles.popup}>
+            <Handshake /> Empréstimo efetivado com sucesso!
+          </div>
+        )}
 
-        <Button className={styles.button}> EFETIVAR O EMPRÉSTIMO</Button>
+        <Button onClick={handleLoan} className={styles.button}>
+          EFETIVAR O EMPRÉSTIMO
+        </Button>
       </div>
     </>
   );

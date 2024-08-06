@@ -20,12 +20,13 @@ export function SimulationForm({
   const { register, handleSubmit } = useForm<ISimulationFormSchema>({
     resolver: zodResolver(simulationFormSchema),
   });
+
   return (
     <div className={styles.simulationForm}>
       <form onSubmit={handleSubmit(onSubmitForm)} className={styles.inputGroup}>
-        <Input placeholder="CPF" {...register("cpf")} />
+        <Input {...register("cpf")} placeholder="CPF" />
         <Input placeholder="UF" {...register("uf")} />
-        <Input placeholder="DATA" {...register("date")} />
+        <Input placeholder="DATA" mask="99/99/9999" {...register("date")} />
         <Input
           type="number"
           placeholder="QUAL O VALOR DO EMPRÉSTIMO"
