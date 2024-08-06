@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 const api = Axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: "https://loan-simulator-api-production-40bf.up.railway.app",
 });
 
 export { api };
