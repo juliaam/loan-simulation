@@ -1,3 +1,9 @@
-```pnpm i``` install dependencies
+using pnpm
 
-```pnpm dev``` start the project
+```pnpm i```
+```pnpm dev``` 
+
+using npm
+
+```npm install```
+```npm run dev``` 
