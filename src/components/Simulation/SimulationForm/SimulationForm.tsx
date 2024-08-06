@@ -20,7 +20,6 @@ export function SimulationForm({
   const { register, handleSubmit } = useForm<ISimulationFormSchema>({
     resolver: zodResolver(simulationFormSchema),
   });
-
   return (
     <div className={styles.simulationForm}>
       <form onSubmit={handleSubmit(onSubmitForm)} className={styles.inputGroup}>
@@ -30,14 +29,16 @@ export function SimulationForm({
         <Input
           type="number"
           placeholder="QUAL O VALOR DO EMPRÉSTIMO"
-          {...register("total_value")}
+          {...register("total_value", { valueAsNumber: true })}
         />
         <Input
           type="number"
           placeholder="QUAL VALOR DESEJA PAGAR POR MÊS"
-          {...register("month_value")}
+          {...register("month_value", { valueAsNumber: true })}
         />
-        <Button className={styles.button}>SIMULAR</Button>
+        <Button type="submit" className={styles.button}>
+          SIMULAR
+        </Button>
       </form>
     </div>
   );

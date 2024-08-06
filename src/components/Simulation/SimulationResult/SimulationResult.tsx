@@ -22,42 +22,54 @@ const rows = [
   },
 ];
 
-export function SimulationResult(): ReactNode {
-  return (
-    <div className={styles.simulationResult}>
-      <div className={styles.simulationHeader}>
-        <CardResult title="VALOR REQUERIDO:" result="R$ 60.000,00" />
-        <CardResult title="VALOR REQUERIDO:" result="R$ 60.000,00" />
-        <CardResult title="VALOR REQUERIDO:" result="R$ 60.000,00" />
-        <CardResult title="VALOR REQUERIDO:" result="R$ 60.000,00" />
-        <CardResult title="VALOR REQUERIDO:" result="R$ 60.000,00" />
-        <CardResult title="VALOR REQUERIDO:" result="R$ 60.000,00" />
-      </div>
-      <p className={styles.installmentsTitle}>PROJEÇÃO DAS PARCELAS:</p>
-      <div className={styles.simulationInstallments}>
-        <div className={styles.installmentsColumns}>
-          {columns.map((column) => (
-            <p className={styles.column} key={column}>
-              {column}
-            </p>
-          ))}
-        </div>
-        {rows.map((row) => (
-          <React.Fragment key={row.id}>
-            <hr className={styles.divider} />
-            <div key={row.id} className={styles.installmentsRow}>
-              <p className={styles.row}>{row.outstandingBalance}</p>
-              <p className={styles.row}>{row.interest}</p>
-              <p className={styles.row}>{row.adjustedOutstandingBalance}</p>
-              <p className={styles.row}>{row.installmentAmount}</p>
-              <p className={styles.row}>{row.dueDate}</p>
-            </div>
-            <hr className={styles.divider} />
-          </React.Fragment>
-        ))}
-      </div>
+interface ISimulationResultProps {
+  loading: boolean;
+}
 
-      <Button className={styles.button}> EFETIVAR O EMPRÉSTIMO</Button>
-    </div>
+export function SimulationResult({
+  loading,
+}: ISimulationResultProps): ReactNode {
+  return (
+    <>
+      {loading ? (
+        "loading"
+      ) : (
+        <div className={styles.simulationResult}>
+          <div className={styles.simulationHeader}>
+            <CardResult title="VALOR REQUERIDO:" result="R$ 60.000,00" />
+            <CardResult title="VALOR REQUERIDO:" result="R$ 60.000,00" />
+            <CardResult title="VALOR REQUERIDO:" result="R$ 60.000,00" />
+            <CardResult title="VALOR REQUERIDO:" result="R$ 60.000,00" />
+            <CardResult title="VALOR REQUERIDO:" result="R$ 60.000,00" />
+            <CardResult title="VALOR REQUERIDO:" result="R$ 60.000,00" />
+          </div>
+          <p className={styles.installmentsTitle}>PROJEÇÃO DAS PARCELAS:</p>
+          <div className={styles.simulationInstallments}>
+            <div className={styles.installmentsColumns}>
+              {columns.map((column) => (
+                <p className={styles.column} key={column}>
+                  {column}
+                </p>
+              ))}
+            </div>
+            {rows.map((row) => (
+              <React.Fragment key={row.id}>
+                <hr className={styles.divider} />
+                <div key={row.id} className={styles.installmentsRow}>
+                  <p className={styles.row}>{row.outstandingBalance}</p>
+                  <p className={styles.row}>{row.interest}</p>
+                  <p className={styles.row}>{row.adjustedOutstandingBalance}</p>
+                  <p className={styles.row}>{row.installmentAmount}</p>
+                  <p className={styles.row}>{row.dueDate}</p>
+                </div>
+                <hr className={styles.divider} />
+              </React.Fragment>
+            ))}
+          </div>
+
+          <Button className={styles.button}> EFETIVAR O EMPRÉSTIMO</Button>
+        </div>
+      )}
+    </>
   );
 }
